@@ -26,3 +26,10 @@
     message: "Slug already in use!",
 }
 ```
+
+## Screenshots
+
+![url shortner page](./screenshots/1.png)
+![url shortner page](./screenshots/2.png)
+![url resolver page](./screenshots/3.png)
+![url resolver page](./screenshots/4.png)
