@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  font-size: 18px;
+  background-color: #eee;
+}
+
+.container {
+  width: 600px;
+  margin: 50px auto;
+}
+
+form div {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.6rem;
+  margin-bottom: 30px;
+}
+
+.heading {
+  padding-bottom: 10px;
+  border-bottom: 2px solid indianred;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  padding-bottom: 5px;
+}
+
+input[type="url"],
+input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+input[type="url"]:focus,
+input[type="text"]:focus {
+  padding: 10px;
+  border: 2px solid indianred;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid black;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: gold;
+  transition: all 0.3s linear;
+  color: #000000;
+  border: 2px solid #000;
+}
+
+.link,
+link:visited {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #333;
+  color: #eee;
+}
+
+.hidden {
+  display: none;
+}
+
+/* border gradient styles */
+
+.gradient-border {
+  --border-width: 3px;
+  margin: 20px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: Lato, sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: white;
+  background: #eee;
+  border-radius: var(--border-width);
+}
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(
+    60deg,
+    #5f86f2,
+    #a65ff2,
+    #f25fd0,
+    #f25f61,
+    #f2cb5f,
+    #abf25f,
+    #5ff281,
+    #5ff2f0
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
