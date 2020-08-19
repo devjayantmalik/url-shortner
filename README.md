@@ -27,6 +27,20 @@
 }
 ```
 
+# Setup Instructions
+
+```sh
+git clone https://github.com/devjayantmalik/url-shortner.git
+```
+
+```sh
+cd url-shortner && npm install
+```
+
+```sh
+npm start
+```
+
 ## Screenshots
 
 ![url shortner page](./screenshots/1.png)
