@@ -1,15 +1,44 @@
 const express = require("express");
+const exphbs = require("express-handlebars");
 
 // create an app
 const app = express();
 
 // configure the middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+
+// configure handlebars
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 
 const db = [];
 
-function create_url(url, slug) {
+// configure page routes
+app.get("/", (req, res) => {
+  return res.render("shorten");
+});
+
+// configure the routes
+app.post("/", (req, res) => {
+  const { url, slug } = req.body;
+
+  // validate the inputs
+  if (!url || !slug)
+    return res.render("shorten", { error: "Please provide url and slug." });
+
+  if (slug.length > 20)
+    return res.render("shorten", {
+      error: "Slug should be less than 20 characters.",
+    });
+
+  if (url.length > 2000)
+    return res.render("shorten", {
+      error: "URL should be less than 2000 characters.",
+    });
+
+  // create item object to hold base_url and slug
   const item = {
     base_url: url,
     slug: slug,
@@ -17,35 +46,26 @@ function create_url(url, slug) {
 
   // check if slug already exists
   const isExists = db.find((item) => item.slug === slug);
-  if (isExists) throw new Error("Slug already exists.");
+  if (isExists) return res.render("shorten", { error: "Slug already exists." });
 
   // insert item in database
   db.push(item);
-  return item;
-}
-
-// configure the routes
-app.get("/shorten", (req, res) => {
-  const { url, slug } = req.query;
-
-  // validate the inputs
-  if (!url || !slug) throw new Error("Please provide url and slug.");
 
   // shorten the slug
-  const item = create_url(url, slug);
-  return res.json(item);
+  return res.render("shorten", { result: item });
 });
 
-app.get("/resolve/:slug", (req, res) => {
+app.get("/:slug", (req, res) => {
   // check if slug exists
   const item = db.find((item) => item.slug === req.params.slug);
-  if (!item) throw new Error("Provided slug does not exists!");
+  if (!item)
+    return res.render("resolve", { error: "Provided slug does not exist!" });
 
-  return res.json(item);
+  return res.render("resolve", { result: item });
 });
 
 app.use((error, req, res, next) => {
-  return res.status(400).json({ message: error.message });
+  return res.render("error", { error: error.message });
 });
 
 // start the app

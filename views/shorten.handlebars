@@ -1,0 +1,41 @@
+<main>
+  <div class="container">
+    <h1 class="heading">URL Shortner</h1>
+    <form action="/" method="POST">
+      <div>
+        <label for="url">Website URL</label>
+        <input type="url" name="url" id="url" required placeholder="Website URL e.g. https://google.com" />
+      </div>
+      <div>
+        <label for="slug">Short Slug</label>
+        <input name="slug" id="slug" type="text" required placeholder="Short Slug e.g. gs" />
+      </div>
+      <button type="submit">Get shortened URL</button>
+    </form>
+  </div>
+
+  {{#if result}}
+  <div class="container">
+    <h1 class="heading">Results</h1>
+    <p>
+      Your short slug is: <span>{{result.slug}}</span>
+    </p>
+    <p>Click on link below to open it in new tab.</p>
+
+    <div class="gradient-border">
+      <a class="link" target="_blank" href="/{{result.slug}}">{{result.slug}}</a>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if error}}
+  <div class="container">
+    <h1 class="heading">Error Occured</h1>
+    <p>
+      {{error}}
+    </p>
+  </div>
+
+  {{/if}}
+
+</main>

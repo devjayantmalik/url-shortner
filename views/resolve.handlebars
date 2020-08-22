@@ -1,0 +1,27 @@
+<main>
+  {{#if result}}
+  <div class="container">
+    <h1 class="heading">Results</h1>
+    <p>
+      Your full url is: {{result.base_url}}
+    </p>
+
+    <div class="gradient-border">
+      <a class="link" href={{result.base_url}}>{{result.base_url}}</a>
+    </div>
+  </div>
+
+  {{/if}}
+
+  {{#if error}}
+  <div class="container">
+    <h1 class="heading">Error Occured!</h1>
+    <p>
+      {{error}}
+    </p>
+
+  </div>
+
+  {{/if}}
+
+</main>

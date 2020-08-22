@@ -1,33 +1,6 @@
 # URL Shortner
 
-## Routes
-
-| Route                                       | Description               |
-| ------------------------------------------- | ------------------------- |
-| Get /                                       | Returns static index page |
-| Get /shorten/?url=base_url&slug=custom_slug | Returns the shortened url |
-| Get /resolve/custom_slug                    | Returns the original url  |
-
-## Sample Response:
-
-200 OK!
-
-```js
-{
-    base_url: "https://google.com",
-    slug: "google"
-}
-```
-
-400 BAD REQUEST ERROR!
-
-```js
-{
-    message: "Slug already in use!",
-}
-```
-
-# Setup Instructions
+## Setup Instructions
 
 ```sh
 git clone https://github.com/devjayantmalik/url-shortner.git
@@ -46,4 +19,11 @@ npm start
 ![url shortner page](./screenshots/1.png)
 ![url shortner page](./screenshots/2.png)
 ![url resolver page](./screenshots/3.png)
-![url resolver page](./screenshots/4.png)
+
+## Usage
+
+You can distribute or modify this code any way you like. Thanks, You are fully independent to do whatever you want to do with source code of this repository.
+
+Believe me it's all yours, only on one condition. I will not take any responsibility if you do something illegal.
+
+And of course if you are using this code for legal purposes, than it's ok!. Thanks.

@@ -11,8 +11,14 @@ body {
 }
 
 .container {
-  width: 600px;
+  width: 80%;
   margin: 50px auto;
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    width: 50%;
+  }
 }
 
 form div {
@@ -71,10 +77,6 @@ link:visited {
   text-align: center;
   background-color: #333;
   color: #eee;
-}
-
-.hidden {
-  display: none;
 }
 
 /* border gradient styles */
